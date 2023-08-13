@@ -80,14 +80,15 @@ ansible-playbook create-ec2.yaml
 PLAY [Provision EC2 instance with Ansible] *******************************************************************
 
 TASK [Create Security Group] *********************************************************************************
-ok: [localhost]
+changed: [localhost]
 
 TASK [Launch EC2 instance] ***********************************************************************************
 changed: [localhost]
 
 TASK [Add tag for EC2 instance] ******************************************************************************
-changed: [localhost] => (item={'id': 'i-0a913ff544c4fde58', 'ami_launch_index': '0', 'private_ip': '172.31.82.252', 'private_dns_name': 'ip-172-31-82-252.ec2.internal', 'public_ip': '44.203.160.237', 'dns_name': 'ec2-44-203-160-237.compute-1.amazonaws.com', 'public_dns_name': 'ec2-44-203-160-237.compute-1.amazonaws.com', 'state_code': 16, 'architecture': 'x86_64', 'image_id': 'ami-053b0d53c279acc90', 'key_name': 'lab-ansible', 'placement': 'us-east-1b', 'region': 'us-east-1', 'kernel': None, 'ramdisk': None, 'launch_time': '2023-08-13T04:34:30.000Z', 'instance_type': 't2.small', 'root_device_type': 'ebs', 'root_device_name': '/dev/sda1', 'state': 'running', 'hypervisor': 'xen', 'tags': {}, 'groups': {'sg-0970e1f44cd1f01e7': 'ansiblelabsg'}, 'virtualization_type': 'hvm', 'ebs_optimized': False, 'block_device_mapping': {'/dev/sda1': {'status': 'attached', 'volume_id': 'vol-0f8789b444b41c367', 'delete_on_termination': True}}, 'tenancy': 'default'})
+changed: [localhost] => (item={'id': 'i-0598ec5e8317e2fc0', 'ami_launch_index': '0', 'private_ip': '172.31.90.110', 'private_dns_name': 'ip-172-31-90-110.ec2.internal', 'public_ip': '44.211.143.155', 'dns_name': 'ec2-44-211-143-155.compute-1.amazonaws.com', 'public_dns_name': 'ec2-44-211-143-155.compute-1.amazonaws.com', 'state_code': 16, 'architecture': 'x86_64', 'image_id': 'ami-053b0d53c279acc90', 'key_name': 'lab-ansible', 'placement': 'us-east-1b', 'region': 'us-east-1', 'kernel': None, 'ramdisk': None, 'launch_time': '2023-08-13T04:45:54.000Z', 'instance_type': 't2.small', 'root_device_type': 'ebs', 'root_device_name': '/dev/sda1', 'state': 'running', 'hypervisor': 'xen', 'tags': {}, 'groups': {'sg-048d959daa5c3561a': 'ansiblelabsg'}, 'virtualization_type': 'hvm', 'ebs_optimized': False, 'block_device_mapping': {'/dev/sda1': {'status': 'attached', 'volume_id': 'vol-0b1c456cdfd6cd619', 'delete_on_termination': True}}, 'tenancy': 'default'})
 
 PLAY RECAP ***************************************************************************************************
-localhost                  : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+localhost                  : ok=3    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
 ```
