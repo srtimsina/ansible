@@ -1,0 +1,30 @@
+---
+- name: Create EC2 Instance
+  hosts: localhost
+  gather_facts: False
+  tasks:
+    - name: Create Security Group
+      ec2_group:
+        name: my-security-group
+        description: My security group description
+        vpc_id: vpc-12345678 # Specify your VPC ID
+        region: us-east-1   # Specify your desired region
+        rules:
+          - proto: tcp
+            ports:
+              - 22
+            cidr_ip: 0.0.0.0/0
+        tags:
+          Name: my-security-group
+
+    - name: Launch EC2 Instance
+      ec2:
+        key_name: my-key-pair
+        instance_type: t2.micro
+        image: ami-12345678  # Specify your desired AMI ID
+        security_group: my-security-group
+        count: 1
+        region: us-east-1   # Specify your desired region
+        wait: yes
+        instance_tags:
+          Name: my-ec2-instance
