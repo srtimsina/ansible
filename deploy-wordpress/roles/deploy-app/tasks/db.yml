@@ -1,0 +1,34 @@
+- name: Installing mysql-server
+  apt:
+    pkg: mysql-server
+    update_cache: yes
+    cache_valid_time: 86400
+    state: present
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Start Mysql
+  service:
+    name: mysql
+    state: started
+
+- name: Installing dependencies
+  apt:
+    pkg: [ 'php-mysql', 'python3-pymysql' ]
+    update_cache: yes
+    cache_valid_time: 86400
+    state: present
+  notify:
+    - restart {{ wp_webserver }}
+
+- name: Create mysql database
+  mysql_db:
+    name: "{{ wp_mysql_db }}"
+    state: present
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+
+- name: Create mysql user
+  mysql_user:
+    name: "{{ wp_mysql_user }}"
+    password: "{{ wp_mysql_password }}"
+    priv: '*.*:ALL'
+    login_unix_socket: /var/run/mysqld/mysqld.sock

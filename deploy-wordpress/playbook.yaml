@@ -1,0 +1,16 @@
+---
+- name: Provision EC2 instance with Ansible
+  hosts: ec2-lab-servers
+  connection: local
+  become: yes
+  vars:
+    wp_version: latest
+    wp_webserver: nginx
+    wp_mysql_db: 'wordpress'
+    wp_mysql_user: 'devops_user'
+    wp_mysql_password: 'Dev0ps@123'
+    wp_admin_email: 'admin@suryaraj.com'
+    wp_sitename: suryaraj.com
+    wp_install_dir: "/var/www/suryaraj.com"
+  roles:
+   - deploy-app
